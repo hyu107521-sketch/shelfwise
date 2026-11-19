@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta name="description" content="A small, private pantry tracker that helps you use food before it expires." />
+    <title>Shelfwise — a calmer pantry</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Shelfwise home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Shelfwise</span>
+        </a>
+        <div class="privacy-note"><span class="privacy-dot" aria-hidden="true"></span>Saved on this device</div>
+      </header>
+
+      <main id="top">
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">YOUR PANTRY, AT A GLANCE</p>
+            <h1 id="page-title">Use what you have.<br /><span>Waste a little less.</span></h1>
+            <p class="intro-copy">Keep an eye on what’s fresh and what to use next. Your list stays private on this device.</p>
+          </div>
+          <div class="intro-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="jar jar-one"><span></span></div>
+            <div class="jar jar-two"><span></span></div>
+            <div class="leaf leaf-one"></div>
+            <div class="leaf leaf-two"></div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="Pantry summary">
+          <article class="stat-card">
+            <span class="stat-label">In your pantry</span>
+            <strong id="total-count" class="stat-value">0</strong>
+            <span class="stat-foot">items tracked</span>
+          </article>
+          <article class="stat-card stat-card-warm">
+            <span class="stat-label">Use soon</span>
+            <strong id="soon-count" class="stat-value">0</strong>
+            <span class="stat-foot">within 3 days</span>
+          </article>
+          <article class="stat-card stat-card-cool">
+            <span class="stat-label">Looking good</span>
+            <strong id="fresh-count" class="stat-value">0</strong>
+            <span class="stat-foot">more than 3 days left</span>
+          </article>
+        </section>
+
+        <section class="workspace" aria-label="Pantry items">
+          <div class="inventory panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">THE SHELF</p>
+                <h2>Your items</h2>
+              </div>
+              <button class="text-button" id="demo-button" type="button">Add sample items</button>
+            </div>
+
+            <div class="toolbar">
+              <label class="search-box">
+                <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="8.7" cy="8.7" r="5.7"></circle><path d="m13 13 4 4"></path></svg>
+                <span class="visually-hidden">Search pantry</span>
+                <input id="search-input" type="search" placeholder="Find an item" autocomplete="off" />
+              </label>
+              <div class="filters" role="group" aria-label="Filter items">
+                <button class="filter-button is-active" data-filter="all" type="button" aria-pressed="true">All</button>
+                <button class="filter-button" data-filter="soon" type="button" aria-pressed="false">Use soon</button>
+              </div>
+            </div>
+
+            <div id="item-list" class="item-list" aria-live="polite"></div>
+            <div id="empty-state" class="empty-state">
+              <div class="empty-icon" aria-hidden="true"><span></span><span></span><span></span></div>
+              <h3>Your shelf is ready</h3>
+              <p>Add a few items and Shelfwise will help you spot what to use next.</p>
+              <button class="button button-secondary" id="empty-add-button" type="button">Add your first item</button>
+            </div>
+          </div>
+
+          <aside class="add-panel panel" id="add-panel">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">A QUICK NOTE</p>
+                <h2>Add an item</h2>
+              </div>
+              <span class="plus-mark" aria-hidden="true">+</span>
+            </div>
+            <form id="item-form">
+              <label class="field-label" for="item-name">Item name</label>
+              <input id="item-name" name="name" type="text" maxlength="48" placeholder="e.g. Greek yogurt" required />
+
+              <div class="field-row">
+                <div>
+                  <label class="field-label" for="item-category">Category</label>
+                  <select id="item-category" name="category">
+                    <option>Produce</option>
+                    <option>Dairy</option>
+                    <option>Meat &amp; fish</option>
+                    <option>Pantry</option>
+                    <option>Bakery</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="field-label" for="item-quantity">Quantity</label>
+                  <input id="item-quantity" name="quantity" type="text" maxlength="20" placeholder="e.g. 2 cups" />
+                </div>
+              </div>
+
+              <label class="field-label" for="item-date">Best by</label>
+              <input id="item-date" name="date" type="date" required />
+              <p class="field-hint">Use the date on the package, or your best estimate.</p>
+
+              <button class="button button-primary" type="submit">Add to my shelf <span aria-hidden="true">↗</span></button>
+            </form>
+            <p class="local-note"><svg aria-hidden="true" viewBox="0 0 20 20"><rect x="4" y="8" width="12" height="9" rx="2"></rect><path d="M7 8V6a3 3 0 0 1 6 0v2"></path></svg>Nothing leaves your browser.</p>
+          </aside>
+        </section>
+      </main>
+
+      <footer><span>Shelfwise</span><span>A tiny tool for a fresher fridge.</span><button id="clear-button" class="footer-button" type="button" hidden>Clear all items</button></footer>
+    </div>
+  </body>
+</html>
